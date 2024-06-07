@@ -7,11 +7,11 @@ $(function () {
     forms.each(function () {
         const form = $(this);
         const submitForm = form.find('.submit_form');
-        const Obuna bolingButton = form.find('.btn_submit-Obuna boling');
+        const subscribeButton = form.find('.btn_submit-subscribe');
         const successMsg = $('.success_msg');
         const errorMsg = $('.error_msg');
         const actionInput = form.find("input[name='action']");
-        const successMsgObuna boling = $('.success_msg_Obuna boling');
+        const successMsgSubscribe = $('.success_msg_subscribe');
 
         form.on('submit', function (event) {
             event.preventDefault();
@@ -22,7 +22,7 @@ $(function () {
             }
 
             submitForm.html('Sending...');
-            Obuna bolingButton.html('Sending...');
+            subscribeButton.html('Sending...');
 
             const toast = new bootstrap.Toast(successMsg[0]);
             const errtoast = new bootstrap.Toast(errorMsg[0]);
@@ -36,9 +36,9 @@ $(function () {
                 success: function (response) {
                     if (response === 'success') {
                         if (actionInput.length > 0) {
-                            Obuna bolingButton.html('Obuna boling');
-                            const toastObuna boling = new bootstrap.Toast(successMsgObuna boling[0]);
-                            toastObuna boling.show();
+                            subscribeButton.html('SUBSCRIBE');
+                            const toastSubscribe = new bootstrap.Toast(successMsgSubscribe[0]);
+                            toastSubscribe.show();
                         } else {
                             toast.show();
                             submitForm.html('Send Message');
@@ -46,7 +46,7 @@ $(function () {
                     } else {
                         errtoast.show();
                         submitForm.html('Send Message');
-                        Obuna bolingButton.html('Obuna boling');
+                        subscribeButton.html('SUBSCRIBE');
                     }
                 }
             });
